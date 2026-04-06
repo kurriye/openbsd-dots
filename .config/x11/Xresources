@@ -1,0 +1,61 @@
+URxvt.font xft:TamzenForPowerline:style=Regular:size=16:antialias=true
+URxvt.boldFont xft:TamzenForPowerline:style=Bold:size=16:antialias=true
+*scrollBar: false
+*internalBorder: 10
+
+urxvt.iso14755: false
+urxvt.keysym.Control-Shift-C: eval:selection_to_clipboard
+urxvt.keysym.Control-Shift-V: eval:paste_clipboard
+URxvt*cursorBlink: true
+! URxvt.depth: 32
+! URxvt.background: [70]#0b0d0d
+
+! special
+*.foreground: #99ccbf
+*.background: #0b0d0d
+*.cursorColor: #99ccbf
+
+! black
+*.color0: #192626
+*.color8: #708c8c
+
+! red
+*.color1: #cc7a7a
+*.color9: #e6a1a1
+
+! green
+*.color2: #c1cc7a  
+*.color10: #d2e6a1
+
+! yellow
+*.color3: #cca37a
+*.color11: #e8c2a2
+
+! blue
+*.color4: #7aa3cc
+*.color12: #a1c8e6
+
+! magenta
+*.color5: #857acc
+*.color13: #aba1e6
+
+! cyan
+*.color6: #7ac1cc
+*.color14: #a1d2e6
+
+! white
+*.color7: #cccccc
+*.color15: #e6e6e6
+
+! xlock config
+XLock.info:
+XLock.username: user:
+XLock.password: pass:
+XLock.background: #0b0d0d
+XLock.foreground: #99ccbf
+
+! xcalc config
+XCalc.stipple: true
+XCalc.ti.Command.background: #0b0d0d
+XCalc.ti.Command.foreground: #99ccbf
+XCalc.ti.cursor: hand3
