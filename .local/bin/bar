@@ -1,0 +1,99 @@
+#!/bin/sh
+
+gettime() {
+    DATETIME=$(date "+%H:%M:%S  %a, %Y/%m/%d")
+    echo -n " $DATETIME "
+}
+
+getnet() {
+    ISACTIVE=$(ifconfig iwn0 | awk '/status:/ { print $2 }')
+    NETWORK=$(ifconfig iwn0 | awk '/(nwid|join)/ { print $3 }')
+    SIGSTRENGTH=$(ifconfig iwn0 | awk 'match($0, /[0-9]*%/) { print substr($0, RSTART, RLENGTH) }')
+    if [ "$ISACTIVE" = "active" ]; then
+        echo -n "Wireless: $NETWORK | Signal: $SIGSTRENGTH | "
+    else
+        echo -n "Wireless: N/A | "
+    fi
+}
+
+getvol() {
+    ISMUTED=$(sndioctl -n output.mute)
+    VOLUME=$(printf '%.0f' $(echo $(sndioctl -n output.level) '*' 100 | bc))
+    if [ $ISMUTED = 0 ]; then#!/bin/sh
+
+gettime() {
+    DATETIME=$(date "+%H:%M:%S  %a, %Y/%m/%d")
+    echo -n " $DATETIME "
+}
+
+getnet() {
+    ISACTIVE=$(ifconfig iwn0 | awk '/status:/ { print $2 }')
+    NETWORK=$(ifconfig iwn0 | awk '/(nwid|join)/ { print $3 }')
+    SIGSTRENGTH=$(ifconfig iwn0 | awk 'match($0, /[0-9]*%/) { print substr($0, RSTART, RLENGTH) }')
+    if [ "$ISACTIVE" = "active" ]; then
+        echo -n "Wireless: $NETWORK | Signal: $SIGSTRENGTH | "
+    else
+        echo -n "Wireless: N/A | "
+    fi
+}
+
+getvol() {
+    ISMUTED=$(sndioctl -n output.mute)
+    VOLUME=$(printf '%.0f' $(echo $(sndioctl -n output.level) '*' 100 | bc))
+    if [ $ISMUTED = 0 ]; then
+        echo -n "Volume: $VOLUME%"
+    elif [ $ISMUTED = 1 ]; then
+        echo -n "Volume: Muted"
+    else
+        echo -n "Volume: N/A"
+    fi
+}
+
+getbat() {
+    BATTERY=$(apm -l)
+    echo -n "$BATTERY% | "
+    ADAPTER=$(apm -a)
+    if [ $ADAPTER = 0 ]; then
+        echo -n "Status: Battery | "
+    elif [ $ADAPTER = 1 ]; then
+        echo -n "Status: AC | "
+    else
+        echo -n "Status: N/A | "
+    fi
+
+    BATTLIFE=$(apm -m)
+    echo -n "Remaining: $BATTLIFE minutes "
+}
+
+while true ; do
+    echo "%{l}$(gettime) %{c}$(getnet)$(getvol) %{r}$(getbat)"
+    sleep 1
+done
+        echo -n "Volume: $VOLUME%"
+    elif [ $ISMUTED = 1 ]; then
+        echo -n "Volume: Muted"
+    else
+        echo -n "Volume: N/A"
+    fi
+}
+
+getbat() {
+    BATTERY=$(apm -l)
+    echo -n "$BATTERY% | "
+    ADAPTER=$(apm -a)
+    if [ $ADAPTER = 0 ]; then
+        echo -n "Status: Battery | "
+    elif [ $ADAPTER = 1 ]; then
+        echo -n "Status: AC | "
+    else
+        echo -n "Status: N/A | "
+    fi
+
+    BATTLIFE=$(apm -m)
+    echo -n "Remaining: $BATTLIFE minutes "
+}
+
+while true ; do
+    echo "%{l}$(gettime) %{c}$(getnet)$(getvol) %{r}$(getbat)"
+    sleep 1
+done
