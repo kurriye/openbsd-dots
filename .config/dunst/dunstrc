@@ -1,0 +1,20 @@
+[global]
+        padding = 8
+        color = "#0b0d0d"
+        frame_width = 2
+        font = "Tamzen 16"
+
+[urgency_low]
+        background = "#0b0d0d"
+        foreground = "#99ccbf"
+        frame_color = "#99ccbf"
+
+[urgency_normal]
+        background = "#0b0d0d"
+        foreground = "#99ccbf"
+        frame_color = "#99ccbf"
+
+[urgency_critical]
+        background = "#0b0d0d"
+        foreground = "#99ccbf"
+        frame_color = "#99ccbf"
